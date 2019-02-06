@@ -8,5 +8,10 @@ module.exports = override(
     libraryName: "antd-mobile",
     libraryDirectory: "lib",
     style: "css"
+  }),
+  fixBabelImports("antd", {
+    libraryName: "antd",
+    libraryDirectory: "lib",
+    style: "css"
   })
 );
