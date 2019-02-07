@@ -32,10 +32,10 @@ export default (state = initialState, action) => {
 //   console.log(store.getState());
 // };
 
-export const openWindow = (url, external) => {
-  console.log("I am called eiei");
-  liff.openWindow({ url, external });
-};
+// export const openWindow = (url, external) => {
+//   console.log("I am called eiei");
+//   liff.openWindow({ url, external });
+// };
 
 // openWindow(url, external) {
 //     liff.openWindow({ url, external });
