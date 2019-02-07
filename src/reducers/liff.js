@@ -3,10 +3,16 @@
 // const liff = window.liff;
 
 export const LIFF_INIT = "IS_INIT";
+export const LIFF_FUNCTION = "LIFF_FUNCTION";
 
 export const setLiff = data => ({
   type: LIFF_INIT,
   payload: data
+});
+
+export const setLiffFunction = func => ({
+  type: LIFF_FUNCTION,
+  payload: func
 });
 
 // export const initLiff = () => async dispatch => {
@@ -19,12 +25,14 @@ export const setLiff = data => ({
 // };
 
 const initialState = {
-  data: null
+  data: null,
+  openWindow: null
 };
 
 export default (state = initialState, action) => {
   const { type, payload } = action;
-  if (type === LIFF_INIT) return { ...state, data: payload.data };
+  if (type === LIFF_INIT) return { ...state, data: payload };
+  else if (type === LIFF_FUNCTION) return { ...state, openWindow: payload };
   else return state;
 };
 

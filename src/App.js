@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import MainRouter from "./routes";
 import { connect } from "react-redux";
-import { setLiff } from "./reducers/liff";
+import { setLiff, setLiffFunction } from "./reducers/liff";
 
 const liff = window.liff;
 
@@ -21,6 +21,12 @@ class App extends Component {
     liff.init(data => {
       // let profile = await liff.getProfile();
       this.props.setLiff(data);
+      this.props.setLiffFunction(
+        liff.openWindow({
+          url: "https://ice-project-liff.herokuapp.com/deposit",
+          external: true
+        })
+      );
       // this.setState({
       //   data: data,
       //   displayName: profile.displayName,
@@ -42,7 +48,8 @@ class App extends Component {
 }
 
 const mapDispatchToProps = {
-  setLiff
+  setLiff,
+  setLiffFunction
 };
 
 export default connect(

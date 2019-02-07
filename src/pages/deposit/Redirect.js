@@ -1,16 +1,16 @@
 import React from "react";
 import { connect } from "react-redux";
 // import { Redirect } from "react-router-dom";
-import { openWindow } from "../../reducers/liff";
 
-const Redirect = ({ liffData }) => {
+const Redirect = ({ liffData, openWindow }) => {
   console.log(liffData, "liffData");
   if (liffData === null) return <div> This should be redirect page lmao</div>;
-  return <h1> {JSON.stringify(liffData)} </h1>;
+  return openWindow();
 };
 
 const mapStateToProps = state => ({
-  liffData: state.liff.data
+  liffData: state.liff.data,
+  liffOpenWindow: state.liff.openWindow
 });
 
 export default connect(mapStateToProps)(Redirect);
