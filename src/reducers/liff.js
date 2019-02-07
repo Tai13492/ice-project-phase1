@@ -1,6 +1,6 @@
 // import store from "../store";
 
-const liff = window.liff;
+// const liff = window.liff;
 
 export const LIFF_INIT = "IS_INIT";
 
@@ -9,14 +9,14 @@ export const setLiff = data => ({
   payload: data
 });
 
-export const initLiff = () => async dispatch => {
-  try {
-    const data = await liff.init();
-    dispatch(setLiff(data));
-  } catch (error) {
-    console.log(error);
-  }
-};
+// export const initLiff = () => async dispatch => {
+//   try {
+//     const data = await liff.init();
+//     dispatch(setLiff(data));
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
 const initialState = {
   data: null
