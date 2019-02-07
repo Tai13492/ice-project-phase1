@@ -6,7 +6,7 @@ import { openWindow } from "../../reducers/liff";
 const Redirect = ({ liffData }) => {
   console.log(liffData, "liffData");
   if (liffData === null) return <div> This should be redirect page lmao</div>;
-  return openWindow(window.location.href + "/deposit", true);
+  return <h1> {JSON.stringify(liffData)} </h1>;
 };
 
 const mapStateToProps = state => ({
