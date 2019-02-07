@@ -1,19 +1,14 @@
 import React, { Component } from "react";
-// import logo from "./logo.svg";
 import "./App.css";
 import MainRouter from "./routes";
-// import TestHook from "./TestHook";
-const liff = window.liff;
+// import { connect } from "react-redux";
+import { initLiff } from "./reducers/liff";
 
 class App extends Component {
-  componentDidMount() {
-    window.addEventListener("load", this.initialize);
+  componentWillMount() {
+    initLiff();
   }
-  initialize = () => {
-    liff.init(data => {
-      console.log(data, "data");
-    });
-  };
+
   render() {
     return (
       <div className="App">
@@ -24,3 +19,12 @@ class App extends Component {
 }
 
 export default App;
+
+// const mapDispatchToProps = {
+//   initLiff
+// };
+
+// export default connect(
+//   null,
+//   mapDispatchToProps
+// )(App);
