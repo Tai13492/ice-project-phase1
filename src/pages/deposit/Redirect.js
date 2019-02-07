@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 const Redirect = ({ liffData, openWindow }) => {
   console.log(liffData, "liffData");
   if (liffData === null) return <div> This should be redirect page lmao</div>;
-  return openWindow();
+  return <h1> It should be directed rn na</h1>;
 };
 
 const mapStateToProps = state => ({
