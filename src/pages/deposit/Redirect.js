@@ -2,10 +2,10 @@ import React from "react";
 import { connect } from "react-redux";
 // import { Redirect } from "react-router-dom";
 
-const Redirect = ({ liffData, openWindow }) => {
+const Redirect = ({ liffData, liffOpenWindow }) => {
   console.log(liffData, "liffData");
   if (liffData === null) return <div> This should be redirect page lmao</div>;
-  return <h1> It should be directed rn na</h1>;
+  return liffOpenWindow();
 };
 
 const mapStateToProps = state => ({

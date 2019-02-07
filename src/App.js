@@ -21,13 +21,12 @@ class App extends Component {
     liff.init(data => {
       // let profile = await liff.getProfile();
       this.props.setLiff(data);
-      liff.openWindow({
-        url: "https://ice-project-liff.herokuapp.com/deposit",
-        external: true
-      });
-      // this.props.setLiffFunction(
-
-      // );
+      this.props.setLiffFunction(
+        liff.openWindow({
+          url: "https://ice-project-liff.herokuapp.com/deposit",
+          external: true
+        })
+      );
       // this.setState({
       //   data: data,
       //   displayName: profile.displayName,
