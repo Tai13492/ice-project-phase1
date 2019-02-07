@@ -16,7 +16,10 @@ const Deposit = () => {
         visible={showModal}
         maskClosable={true}
         centered={true}
-        onCancel={() => setModal(false)}
+        onCancel={() => {
+          setModal(false);
+          window.location.replace("line://");
+        }}
         onOk={() => {
           console.log("eiei");
           setModal(false);
