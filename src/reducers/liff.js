@@ -9,13 +9,13 @@ export const setLiff = data => ({
   payload: data
 });
 
-export const initLiff = () => {
-  //   console.log("I am called");
-  liff.init(data => {
-    // console.log("I am liff Init");
-    setLiff(data);
-  });
-  //   console.log("I am after liff init");
+export const initLiff = () => async dispatch => {
+  try {
+    const data = await liff.init();
+    dispatch(setLiff(data));
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const initialState = {

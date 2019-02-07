@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import "./App.css";
 import MainRouter from "./routes";
-// import { connect } from "react-redux";
+import { connect } from "react-redux";
 import { initLiff } from "./reducers/liff";
 
 class App extends Component {
   componentWillMount() {
-    initLiff();
+    this.props.initLiff();
   }
 
   render() {
@@ -18,13 +18,11 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapDispatchToProps = {
+  initLiff
+};
 
-// const mapDispatchToProps = {
-//   initLiff
-// };
-
-// export default connect(
-//   null,
-//   mapDispatchToProps
-// )(App);
+export default connect(
+  null,
+  mapDispatchToProps
+)(App);
