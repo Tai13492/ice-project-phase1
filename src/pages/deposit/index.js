@@ -18,11 +18,11 @@ const Deposit = () => {
         centered={true}
         onCancel={() => {
           setModal(false);
-          window.location.replace("line://");
+          window.location.replace("https://line.me/R/ti/p/f4TRdbATay");
         }}
         onOk={() => {
-          console.log("eiei");
           setModal(false);
+          window.location.replace("https://line.me/R/ti/p/f4TRdbATay");
         }}
       >
         {result}

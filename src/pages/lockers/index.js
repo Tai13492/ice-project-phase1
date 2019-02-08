@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 const Lockers = () => {
   return <h1> This is lockers</h1>;
