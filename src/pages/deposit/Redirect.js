@@ -2,7 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import { liffHelper } from "../../App";
 const Redirect = ({ liffData }) => {
-  console.log(liffData, "liffData");
   if (liffData === null) return <div> This should be redirect page lmao</div>;
   else {
     liffHelper.openExternal(

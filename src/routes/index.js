@@ -8,7 +8,6 @@ import ReturnLockers from "pages/returnlockers";
 
 const MainRouter = () => (
   <div>
-    <h1> eiei </h1>
     <Router>
       <Switch>
         <Route exact path="/return-lockers" component={ReturnLockers} />
