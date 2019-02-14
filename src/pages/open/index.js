@@ -1,10 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import QrReader from "react-qr-reader";
 import { Modal } from "antd";
+import { NavBar } from "antd-mobile";
 
 const Deposit = () => {
   const [{ result, delay }, setQRCode] = useState({ result: "", delay: 300 });
   const [showModal, setModal] = useState(false);
+
+  useEffect(() => {
+    document.body.style.backgroundColor = "rgba(0,0,0,0.5)";
+    return function cleanup() {
+      document.body.style.backgroundColor = "";
+    };
+  });
+
   const afterScan = function(data) {
     if (data === null) return;
     setQRCode({ result: data, delay: 300 });
@@ -12,6 +21,7 @@ const Deposit = () => {
   };
   return (
     <div>
+      <NavBar mode="dark">Open Locker</NavBar>
       <Modal
         visible={showModal}
         maskClosable={true}
@@ -27,17 +37,24 @@ const Deposit = () => {
       >
         {result}
       </Modal>
-      <h1> This is deposit </h1>
-      <div style={{ width: 250, height: 250 }}>
-        <QrReader
-          delay={delay}
-          onError={err => console.log(err)}
-          onScan={data => {
-            afterScan(data);
-          }}
-        />
-      </div>
-      <p> {result}</p>
+      <div style={{ height: "15vh" }} />
+      <QrReader
+        delay={delay}
+        onError={err => console.log(err)}
+        onScan={data => {
+          afterScan(data);
+        }}
+      />
+      <p
+        style={{
+          marginTop: 24,
+          color: "white",
+          padding: 24,
+          fontSize: "1.1em"
+        }}
+      >
+        Line up the QR code to scan it with your device's camera.
+      </p>
     </div>
   );
 };

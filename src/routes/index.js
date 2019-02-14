@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Deposit from "pages/deposit";
-import DepositRedirect from "pages/deposit/Redirect";
+import Open from "pages/open";
+import OpenRedirect from "pages/open/Redirect";
 import Lockers from "pages/lockers";
 import ShareLockers from "pages/sharelockers";
 import ReturnLockers from "pages/returnlockers";
@@ -13,8 +13,8 @@ const MainRouter = () => (
         <Route exact path="/return-lockers" component={ReturnLockers} />
         <Route exact path="/share-lockers" component={ShareLockers} />
         <Route exact path="/lockers" component={Lockers} />
-        <Route exact path="/deposit" component={Deposit} />
-        <Route exact path="/" component={DepositRedirect} />
+        <Route exact path="/open-locker" component={Open} />
+        <Route exact path="/" component={OpenRedirect} />
       </Switch>
     </Router>
   </div>
