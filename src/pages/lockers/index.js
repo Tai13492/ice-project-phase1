@@ -1,6 +1,5 @@
 import React from "react";
 import { NavBar, Card, WingBlank, WhiteSpace } from "antd-mobile";
-import { Link } from "react-router-dom";
 const lockers = [
   {
     faculty: "Faculty of Engineering",
@@ -46,17 +45,18 @@ const lockers = [
   }
 ];
 
-const Lockers = () => {
+// TODO: Fetch data from server, add onClick
+
+const Lockers = ({ history }) => {
   return (
     <div>
       <NavBar mode="dark"> Find Lockers </NavBar>
-      <Link to="/return-lockers"> Test eiei </Link>
-      {/* <WingBlank size="lg">
+      <WingBlank size="lg">
         <WhiteSpace size="lg" />
         {lockers.map(({ faculty, imgSrc, available }) => {
           return (
             <React.Fragment>
-              <Card>
+              <Card onClick={() => history.push("/lockers/1")}>
                 <Card.Header title={faculty} thumb={imgSrc} />
                 <Card.Body>
                   <div> Available: {available}</div>
@@ -66,7 +66,7 @@ const Lockers = () => {
             </React.Fragment>
           );
         })}
-      </WingBlank> */}
+      </WingBlank>
     </div>
   );
 };
