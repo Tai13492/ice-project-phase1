@@ -14,7 +14,8 @@ const MainRouter = () => (
         <Route exact path="/share-lockers" component={ShareLockers} />
         <Route exact path="/lockers" component={Lockers} />
         <Route exact path="/open-locker" component={Open} />
-        <Route exact path="/" component={OpenRedirect} />
+        <Route exact path="/open-locker-redirect" component={OpenRedirect} />
+        <Route exact path="/" component={Lockers} />
       </Switch>
     </Router>
   </div>
