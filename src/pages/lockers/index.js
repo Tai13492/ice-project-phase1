@@ -1,6 +1,6 @@
 import React from "react";
 import { NavBar, Card, WingBlank, WhiteSpace } from "antd-mobile";
-
+import { Link } from "react-router-dom";
 const lockers = [
   {
     faculty: "Faculty of Engineering",
@@ -50,7 +50,8 @@ const Lockers = () => {
   return (
     <div>
       <NavBar mode="dark"> Find Lockers </NavBar>
-      <WingBlank size="lg">
+      <Link to="/return-lockers"> Test eiei </Link>
+      {/* <WingBlank size="lg">
         <WhiteSpace size="lg" />
         {lockers.map(({ faculty, imgSrc, available }) => {
           return (
@@ -65,7 +66,7 @@ const Lockers = () => {
             </React.Fragment>
           );
         })}
-      </WingBlank>
+      </WingBlank> */}
     </div>
   );
 };
