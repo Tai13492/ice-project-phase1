@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import QrReader from "react-qr-reader";
 import { Modal } from "antd";
 import { NavBar } from "antd-mobile";
+import Axios from "axios";
 
 const Deposit = () => {
   const [{ result, delay }, setQRCode] = useState({ result: "", delay: 300 });
@@ -28,11 +29,12 @@ const Deposit = () => {
         centered={true}
         onCancel={() => {
           setModal(false);
-          window.location.replace("https://line.me/R/ti/p/f4TRdbATay");
         }}
         onOk={() => {
-          setModal(false);
-          window.location.replace("https://line.me/R/ti/p/f4TRdbATay");
+          Axios.post("/open-locker").then(() => {
+            setModal(false);
+            window.location.replace("https://line.me/R/ti/p/f4TRdbATay");
+          });
         }}
       >
         {result}

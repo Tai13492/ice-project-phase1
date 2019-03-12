@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavBar, Card, WingBlank, WhiteSpace, Icon } from "antd-mobile";
-
+import filterArrayFromString from "@/utils/filterArrayFromString";
 const lockers = [
   {
     faculty: "Faculty of Engineering",
@@ -47,6 +47,7 @@ const lockers = [
 ];
 
 const Lockers = () => {
+  const [searchValue, setSearchValue] = useState("");
   return (
     <div className="bg-primary">
       <NavBar mode="dark"> Find Lockers </NavBar>
@@ -59,25 +60,28 @@ const Lockers = () => {
             className="input"
             placeholder="Search"
             style={{ marginLeft: 2 }}
+            onChange={e => setSearchValue(e.target.value)}
           />
         </div>
         <WhiteSpace size="lg" />
-        {lockers.map(({ faculty, imgSrc, available }) => {
-          return (
-            <React.Fragment>
-              <Card>
-                <Card.Header title={faculty} thumb={imgSrc} />
-                <Card.Body>
-                  <div className="location-content">
-                    <div> Building 2</div>
-                    <div>Available: {available}</div>
-                  </div>
-                </Card.Body>
-              </Card>
-              <WhiteSpace size="lg" />
-            </React.Fragment>
-          );
-        })}
+        {filterArrayFromString(lockers, searchValue).map(
+          ({ faculty, imgSrc, available }) => {
+            return (
+              <React.Fragment>
+                <Card>
+                  <Card.Header title={faculty} thumb={imgSrc} />
+                  <Card.Body>
+                    <div className="location-content">
+                      <div> Building 2</div>
+                      <div>Available: {available}</div>
+                    </div>
+                  </Card.Body>
+                </Card>
+                <WhiteSpace size="lg" />
+              </React.Fragment>
+            );
+          }
+        )}
       </WingBlank>
     </div>
   );
