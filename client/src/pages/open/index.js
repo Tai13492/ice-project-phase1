@@ -52,7 +52,9 @@ const Deposit = () => {
           marginTop: 24,
           color: "white",
           padding: 24,
-          fontSize: "1.1em"
+          fontSize: "1.1em",
+          marginLeft: "auto",
+          marginRight: "auto"
         }}
       >
         Line up the QR code to scan it with your device's camera.

@@ -4,10 +4,10 @@ import { WhiteSpace } from "antd-mobile";
 import { Card, Button } from "antd";
 import facultyOfEngineering from "../../assets/facultyOfEngineeringSign.jpeg";
 
-const ShareLockers = () => {
+const MyLocker = () => {
   return (
     <div>
-      <NavBar mode="dark"> Share Lockers </NavBar>
+      <NavBar mode="dark"> My Locker </NavBar>
       <WhiteSpace size="lg" />
       <Card
         style={{ width: "84vw", marginLeft: "8vw", marginRight: "8vw" }}
@@ -45,6 +45,4 @@ const ShareLockers = () => {
   );
 };
 
-export default ShareLockers;
-
-//https://upload.wikimedia.org/wikipedia/commons/0/03/Chula_eng1bldg.jpg
+export default MyLocker;

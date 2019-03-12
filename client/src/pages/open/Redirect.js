@@ -8,7 +8,7 @@ const Redirect = ({ liffData }) => {
       "https://ice-project-liff.herokuapp.com/open-locker",
       true
     );
-    return <h1> Eiei </h1>;
+    return <h1> Loading... </h1>;
   }
 };
 

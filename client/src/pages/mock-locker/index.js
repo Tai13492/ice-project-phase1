@@ -42,6 +42,7 @@ const MockLocker = () => {
       <div
         style={{
           display: "flex",
+          marginTop: 24,
           justifyContent: "center",
           alignItems: "center"
         }}
