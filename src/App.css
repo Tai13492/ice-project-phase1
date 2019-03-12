@@ -7,9 +7,48 @@ body {
   height: 40vmin;
 }
 
-/* .am-navbar {
-  background-color: #0db7ed !important;
-} */
+.am-navbar {
+  background-color: #2979ff !important;
+  height: 55px !important;
+}
+
+.input {
+  border-width: 0px;
+  border-style: none;
+}
+
+.bg-primary {
+  background-color: #eef4fb;
+}
+
+.location-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #5c5858;
+  font-size: 14px;
+  letter-spacing: 0.120052px;
+}
+
+.search-bar-container {
+  background: white;
+  height: 37px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+.am-card-header-content {
+  font-weight: bold;
+  letter-spacing: 0.154353px;
+}
+.am-navbar-title {
+  font-weight: bold;
+  font-size: 1.5em !important;
+  letter-spacing: 0.171503px;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

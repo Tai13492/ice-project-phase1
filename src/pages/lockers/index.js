@@ -1,5 +1,5 @@
 import React from "react";
-import { NavBar, Card, WingBlank, WhiteSpace } from "antd-mobile";
+import { NavBar, Card, WingBlank, WhiteSpace, Icon } from "antd-mobile";
 
 const lockers = [
   {
@@ -48,9 +48,19 @@ const lockers = [
 
 const Lockers = () => {
   return (
-    <div>
+    <div className="bg-primary">
       <NavBar mode="dark"> Find Lockers </NavBar>
       <WingBlank size="lg">
+        <WhiteSpace size="lg" />
+        <div className="search-bar-container">
+          <Icon type="search" color="#C2B9B9" />
+          <input
+            type="text"
+            className="input"
+            placeholder="Search"
+            style={{ marginLeft: 2 }}
+          />
+        </div>
         <WhiteSpace size="lg" />
         {lockers.map(({ faculty, imgSrc, available }) => {
           return (
@@ -58,7 +68,10 @@ const Lockers = () => {
               <Card>
                 <Card.Header title={faculty} thumb={imgSrc} />
                 <Card.Body>
-                  <div> Available: {available}</div>
+                  <div className="location-content">
+                    <div> Building 2</div>
+                    <div>Available: {available}</div>
+                  </div>
                 </Card.Body>
               </Card>
               <WhiteSpace size="lg" />
