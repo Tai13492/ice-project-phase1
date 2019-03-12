@@ -1,22 +1,20 @@
 import React from "react";
 import { NavBar } from "antd-mobile";
 import { WhiteSpace } from "antd-mobile";
-import { Card, Button } from "antd";
+import { Card } from "antd";
 import facultyOfEngineering from "../../assets/facultyOfEngineeringSign.jpeg";
 
 const MyLocker = () => {
   return (
-    <div>
+    <div className="bg-primary">
       <NavBar mode="dark"> My Locker </NavBar>
       <WhiteSpace size="lg" />
       <Card
-        style={{ width: "84vw", marginLeft: "8vw", marginRight: "8vw" }}
+        style={{ width: "88vw", marginLeft: "6vw", marginRight: "6vw" }}
         cover={<img alt="example" src={facultyOfEngineering} />}
         actions={[
-          <Button type="primary" size="large" icon="team">
-            {" "}
-            Share{" "}
-          </Button>
+          <button className="button default bg-danger"> Return </button>,
+          <button className="button default bg-success">Share</button>
         ]}
       >
         <Card.Meta
@@ -26,13 +24,11 @@ const MyLocker = () => {
       </Card>
       <WhiteSpace size="lg" />
       <Card
-        style={{ width: "84vw", marginLeft: "8vw", marginRight: "8vw" }}
+        style={{ width: "88vw", marginLeft: "6vw", marginRight: "6vw" }}
         cover={<img alt="example" src={facultyOfEngineering} />}
         actions={[
-          <Button type="primary" size="large" icon="team">
-            {" "}
-            Share{" "}
-          </Button>
+          <button className="button default bg-danger"> Return </button>,
+          <button className="button default bg-success">Share</button>
         ]}
       >
         <Card.Meta
