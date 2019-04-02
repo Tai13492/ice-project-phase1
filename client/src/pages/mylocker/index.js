@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { WhiteSpace, Modal, NavBar } from "antd-mobile";
 import { Card, Icon, Row, Col } from "antd";
 import facultyOfEngineering from "../../assets/facultyOfEngineeringSign.jpeg";
@@ -6,6 +6,13 @@ import Goku from "../../assets/goku.jpg";
 
 const Alert = Modal.alert;
 const MyLocker = () => {
+  const [userName, setUserName] = useState("ttaaii13492");
+  useEffect(() => {
+    if (localStorage.getItem("test") === "test") {
+      console.log("Wow za there is item");
+      setUserName("There is localStorage!");
+    }
+  }, []);
   return (
     <div className="bg-primary">
       <NavBar mode="dark"> My Locker </NavBar>
@@ -27,7 +34,7 @@ const MyLocker = () => {
           <Col span={16} style={{ padding: 12, color: "white", fontSize: 14 }}>
             <p style={{ marginBottom: 2 }}>
               Username:
-              <span style={{ fontWeight: "bold" }}> ttaaii13492 </span>
+              <span style={{ fontWeight: "bold" }}> {userName} </span>
             </p>
             <p style={{ marginBottom: 2 }}>
               Email:

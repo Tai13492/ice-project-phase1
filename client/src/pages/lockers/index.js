@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavBar, Card, WingBlank, WhiteSpace, Icon } from "antd-mobile";
 import filterArrayFromString from "@/utils/filterArrayFromString";
 const lockers = [
@@ -48,6 +48,9 @@ const lockers = [
 
 const Lockers = () => {
   const [searchValue, setSearchValue] = useState("");
+  useEffect(() => {
+    localStorage.setItem("test", "test");
+  }, []);
   return (
     <div className="bg-primary">
       <NavBar mode="dark"> Find Lockers </NavBar>
