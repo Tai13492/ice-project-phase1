@@ -1,20 +1,16 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Open from "pages/open";
-import OpenRedirect from "pages/open/Redirect";
-import Lockers from "pages/lockers";
-import MyLocker from "pages/mylocker";
-import MockLocker from "pages/mock-locker";
+import { BrowserRouter as Router, Switch } from "react-router-dom";
+import PrivateRoute from "./PrivateRoute";
+import LiffPages from "./PrivatePages";
+import UnAuthenticateRoute from "./UnAuthenticateRoute";
+import AuthenticationPages from "./AuthenticationPages";
 
 const MainRouter = () => (
   <div>
     <Router>
       <Switch>
-        <Route exact path="/my-locker" component={MyLocker} />
-        <Route exact path="/test-locker" component={MockLocker} />
-        <Route exact path="/open-locker" component={Open} />
-        <Route exact path="/open-locker-redirect" component={OpenRedirect} />
-        <Route exact path="/" component={Lockers} />
+        <UnAuthenticateRoute path="/auth" component={AuthenticationPages} />
+        <PrivateRoute path="/" component={LiffPages} />
       </Switch>
     </Router>
   </div>
