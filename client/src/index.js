@@ -7,12 +7,12 @@ import store from "./store";
 import { Provider } from "react-redux";
 import Axios from "axios";
 
-let END_POINT;
-if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
-  END_POINT = "https://10e2f066.ngrok.io";
-} else {
-  END_POINT = "https://api.lockerswarm.xyz";
-}
+let END_POINT = "https://10e2f066.ngrok.io";
+// if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
+//   END_POINT = "https://10e2f066.ngrok.io";
+// } else {
+//   END_POINT = "https://api.lockerswarm.xyz";
+// }
 
 Axios.defaults.baseURL = END_POINT;
 Axios.defaults.headers.post["Content-Type"] = "application/json";
