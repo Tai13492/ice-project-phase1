@@ -57,6 +57,14 @@ class LiffHelper {
       console.log("NOT IN LIFF");
     }
   }
+  sendMessage(msg){
+    if(liff){
+
+    }else{
+      console.log("NOT IN LIFF");
+      window.location.href = "line://msg/text/?{text_message}"
+    }
+  }
 }
 
 export const liffHelper = new LiffHelper();

@@ -51,7 +51,7 @@ const LockerCard = ({
                         const res = await Axios.get(
                           "/share-locker/generateLink/" + lockerID
                         );
-                        console.log(res);
+                        console.log(res.data.link);
                       }
                     }
                   ]

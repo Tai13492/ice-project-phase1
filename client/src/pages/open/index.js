@@ -18,6 +18,7 @@ const Deposit = () => {
     const location = window.location.href;
     const indexOfEqual = location.indexOf("=");
     initAxiosLineErrorHandling();
+
     if (indexOfEqual !== -1) {
       const accessCode = location.substring(indexOfEqual + 1);
       setAccessCode(accessCode);
@@ -115,14 +116,15 @@ function showError() {
 }
 
 const initAxiosLineErrorHandling = () => {
-  Axios.intercepters.response.use(
+  Axios.interceptors.response.use(
     response => {
       return response;
     },
     error => {
-      if (error.response.status === 403 || error.response.status === 401) {
+      if (error.response.status === 401 || error.response.status === 403) {
         showError();
       }
+      return error;
     }
   );
 };
