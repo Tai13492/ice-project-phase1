@@ -10,7 +10,7 @@ const UnAuthenticateRoute = ({
 }) => {
   let path = initialURL;
   if (!initialURL) {
-    path = "";
+    path = "open-locker";
   }
   return (
     <Route

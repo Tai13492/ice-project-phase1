@@ -52,8 +52,6 @@ const LockerCard = ({
                           "/share-locker/generateLink/" + lockerID
                         );
                         liffHelper.sendMessage(res.data.link);
-
-                        console.log(res.data.link);
                       }
                     }
                   ]

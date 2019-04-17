@@ -28,7 +28,7 @@ const Deposit = () => {
 
     return function cleanup() {
       document.body.style.backgroundColor = "";
-      //setAxiosErrorHandlingToDefault();
+      setAxiosErrorHandlingToDefault();
     };
   }, []);
 
