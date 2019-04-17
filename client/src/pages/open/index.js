@@ -4,6 +4,9 @@ import { Modal } from "antd";
 import { NavBar } from "antd-mobile";
 import Axios from "axios";
 import { liffHelper } from "../../App";
+// TODO init Axios interceptor, show modal!
+// Code in the dark, LINE URL scheme
+// Code in the dark, return locker
 const Deposit = () => {
   const [{ result, delay }, setQRCode] = useState({ result: "", delay: 300 });
   const [showModal, setModal] = useState(false);
@@ -16,6 +19,8 @@ const Deposit = () => {
     if (indexOfEqual !== -1) {
       const accessCode = location.substring(indexOfEqual + 1);
       setAccessCode(accessCode);
+    } else {
+      openLocker();
     }
 
     return function cleanup() {
@@ -25,11 +30,9 @@ const Deposit = () => {
 
   const afterScan = function(data) {
     if (data === null) return;
-    if (accessCode === "") {
-      const indexOfEqual = data.indexOf("=");
-      const achievedAccessCode = data.substring(indexOfEqual + 1);
-      setAccessCode(achievedAccessCode);
-    }
+    const indexOfEqual = data.indexOf("=");
+    const achievedAccessCode = data.substring(indexOfEqual + 1);
+    setAccessCode(achievedAccessCode);
     setQRCode({ result: data, delay: 300 });
     setModal(true);
   };
