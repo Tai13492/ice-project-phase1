@@ -30,7 +30,7 @@ const Deposit = () => {
       document.body.style.backgroundColor = "";
       //setAxiosErrorHandlingToDefault();
     };
-  });
+  }, []);
 
   const afterScan = function(data) {
     if (data === null) return;
