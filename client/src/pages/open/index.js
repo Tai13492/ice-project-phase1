@@ -3,7 +3,7 @@ import QrReader from "react-qr-reader";
 import { Modal } from "antd";
 import { NavBar } from "antd-mobile";
 import Axios from "axios";
-import { liffHelper } from "../../App";
+//import { liffHelper } from "../../App";
 
 // Code in the dark, LINE URL scheme
 // Code in the dark, return locker
@@ -28,7 +28,7 @@ const Deposit = () => {
 
     return function cleanup() {
       document.body.style.backgroundColor = "";
-      setAxiosErrorHandlingToDefault();
+      //setAxiosErrorHandlingToDefault();
     };
   });
 
@@ -65,7 +65,7 @@ const Deposit = () => {
       }
     }
     setModal(false);
-    liffHelper.closeLiff();
+    //liffHelper.closeLiff();
   };
   console.log(accessCode, "accessCode");
   return (

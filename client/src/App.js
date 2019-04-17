@@ -57,12 +57,11 @@ class LiffHelper {
       console.log("NOT IN LIFF");
     }
   }
-  sendMessage(msg){
-    if(liff){
-
-    }else{
+  sendMessage(msg) {
+    if (liff) {
+      window.location.href = "line://msg/text/?" + msg;
+    } else {
       console.log("NOT IN LIFF");
-      window.location.href = "line://msg/text/?{text_message}"
     }
   }
 }

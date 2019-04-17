@@ -2,7 +2,7 @@ import React from "react";
 import { Card, Icon } from "antd";
 import { Modal } from "antd-mobile";
 import Axios from "axios";
-
+import { liffHelper } from "../../../App";
 const Alert = Modal.alert;
 
 const LockerCard = ({
@@ -51,6 +51,8 @@ const LockerCard = ({
                         const res = await Axios.get(
                           "/share-locker/generateLink/" + lockerID
                         );
+                        liffHelper.sendMessage(res.data.link);
+
                         console.log(res.data.link);
                       }
                     }
