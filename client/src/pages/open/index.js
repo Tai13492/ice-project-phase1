@@ -4,9 +4,10 @@ import { Modal } from "antd";
 import { NavBar } from "antd-mobile";
 import Axios from "axios";
 import { liffHelper } from "../../App";
-// TODO init Axios interceptor, show modal!
+
 // Code in the dark, LINE URL scheme
 // Code in the dark, return locker
+
 const Deposit = () => {
   const [{ result, delay }, setQRCode] = useState({ result: "", delay: 300 });
   const [showModal, setModal] = useState(false);
@@ -16,6 +17,7 @@ const Deposit = () => {
     document.body.style.backgroundColor = "rgba(0,0,0,0.5)";
     const location = window.location.href;
     const indexOfEqual = location.indexOf("=");
+    initAxiosLineErrorHandling();
     if (indexOfEqual !== -1) {
       const accessCode = location.substring(indexOfEqual + 1);
       setAccessCode(accessCode);
@@ -25,6 +27,7 @@ const Deposit = () => {
 
     return function cleanup() {
       document.body.style.backgroundColor = "";
+      setAxiosErrorHandlingToDefault();
     };
   });
 
@@ -103,3 +106,37 @@ const Deposit = () => {
 };
 
 export default Deposit;
+
+function showError() {
+  Modal.error({
+    title: "Authentication error",
+    content: "You are not authorized to access this locker!"
+  });
+}
+
+const initAxiosLineErrorHandling = () => {
+  Axios.intercepters.response.use(
+    response => {
+      return response;
+    },
+    error => {
+      if (error.response.status === 403 || error.response.status === 401) {
+        showError();
+      }
+    }
+  );
+};
+
+const setAxiosErrorHandlingToDefault = () => {
+  Axios.interceptors.response.use(
+    response => {
+      return response;
+    },
+    error => {
+      if (error.response.status === 401) {
+        window.location.href = "https://10e2f066.ngrok.io/auth/lineLoginPage";
+      }
+      return error;
+    }
+  );
+};

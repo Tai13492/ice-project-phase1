@@ -59,7 +59,6 @@ const initAxiosErrorHandling = callback => {
     },
     error => {
       if (error.response.status === 401) {
-        console.log("eiei");
         callback();
         window.location.href = "https://10e2f066.ngrok.io/auth/lineLoginPage";
       }
