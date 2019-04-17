@@ -9,7 +9,7 @@ const UnAuthenticateRoute = ({
   ...rest
 }) => {
   let path = initialURL;
-  if (initialURL === null) {
+  if (!initialURL) {
     path = "";
   }
   return (
