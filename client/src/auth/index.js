@@ -23,13 +23,14 @@ class Auth extends React.Component {
           lineToken: idToken
         });
         if (res) {
-          this.setState({ res });
+          // this.setState({ res });
           localStorage.setItem("token", res.data.token);
           setAuthentication(true);
           setTokenAndExpiration(idToken, expireIn);
           Axios.defaults.headers.common["Authorization"] =
             "Bearer " + res.data.token;
         }
+        this.setState({ res });
       } catch (error) {
         console.log(error);
         throw error;
