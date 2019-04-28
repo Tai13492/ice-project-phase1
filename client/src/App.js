@@ -12,7 +12,7 @@ class App extends Component {
     const { setInitialURL } = this.props;
     if (!window.location.href.includes("/auth/line-landing")) {
       const path = window.location.href.split("/")[3];
-      localStorage.setItem("path", path);
+      localStorage.setItem("path", "find-lockers");
       setInitialURL(path);
     }
     setInitialURL(localStorage.getItem("path"));
@@ -57,7 +57,6 @@ class LiffHelper {
       console.log("NOT IN LIFF");
     }
   }
- 
 }
 
 export const liffHelper = new LiffHelper();
