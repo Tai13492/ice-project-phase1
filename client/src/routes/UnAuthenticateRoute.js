@@ -7,24 +7,20 @@ const UnAuthenticateRoute = ({
   isAuthenticate,
   initialURL,
   ...rest
-}) => {
-  let path = initialURL;
-  if (!initialURL) {
-    path = "open-locker";
-  }
-  return (
+}) =>
+   (
     <Route
       {...rest}
       render={props => {
         if (!isAuthenticate) {
           return <Component {...props} />;
         } else {
-          return <Redirect to={"/" + path} />;
+          return <Redirect to={"/" + initialURL} />;
         }
       }}
     />
   );
-};
+
 const mapStateToProps = state => ({
   isAuthenticate: state.authentication.isAuthenticate,
   initialURL: state.liff.initialURL

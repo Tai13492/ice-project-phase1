@@ -2,7 +2,7 @@ import React from "react";
 import { Card, Icon } from "antd";
 import { Modal } from "antd-mobile";
 import Axios from "axios";
-import { liffHelper } from "../../../App";
+
 const Alert = Modal.alert;
 
 const LockerCard = ({
@@ -37,31 +37,32 @@ const LockerCard = ({
             >
               <Icon type="rollback" style={{ marginRight: 4 }} /> Return
             </button>,
-            <button
+            <a
+              href="line://msg/text/?loremipsum"
               className="button default bg-success"
-              onClick={async () =>
-                Alert(
-                  "Share Locker",
-                  "Are you going to share " + location_description + " ?",
-                  [
-                    { text: "Cancel", onPress: () => console.log("cancel") },
-                    {
-                      text: "Ok",
-                      onPress: async () => {
-                        const res = await Axios.get(
-                          "/share-locker/generateLink/" + lockerID
-                        );
-                        liffHelper.sendMessage(res.data.link);
-                      }
-                    }
-                  ]
-                )
-              }
+              // onClick={async () =>
+              //   Alert(
+              //     "Share Locker",
+              //     "Are you going to share " + location_description + " ?",
+              //     [
+              //       { text: "Cancel", onPress: () => console.log("cancel") },
+              //       {
+              //         text: "Ok",
+              //         onPress: async () => {
+              //           const res = await Axios.get(
+              //             "/share-locker/generateLink/" + lockerID
+              //           );
+              //           console.log(res);
+              //         }
+              //       }
+              //     ]
+              //   )
+              // }
             >
               {" "}
               <Icon type="usergroup-add" style={{ marginRight: 4 }} />
               Share
-            </button>
+            </a>
           ]
         : null
     }

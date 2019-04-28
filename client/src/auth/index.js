@@ -6,6 +6,8 @@ import {
   setTokenAndExpiration
 } from "../auth/ducks";
 import Axios from "axios";
+import { END_POINT } from "../index";
+
 class Auth extends React.Component {
   async componentDidMount() {
     const { setAuthentication, setTokenAndExpiration } = this.props;
@@ -29,7 +31,7 @@ class Auth extends React.Component {
         throw error;
       }
     } else {
-      window.location.href = "https://10e2f066.ngrok.io/auth/lineLoginPage";
+      window.location.href = END_POINT + "/auth/lineLoginPage";
     }
   }
   render() {
@@ -59,8 +61,9 @@ const initAxiosErrorHandling = callback => {
     },
     error => {
       if (error.response.status === 401) {
+        console.log("eiei");
         callback();
-        window.location.href = "https://10e2f066.ngrok.io/auth/lineLoginPage";
+        window.location.href = END_POINT + "/auth/lineLoginPage";
       }
       return error;
     }

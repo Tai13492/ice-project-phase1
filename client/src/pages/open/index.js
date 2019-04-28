@@ -3,11 +3,7 @@ import QrReader from "react-qr-reader";
 import { Modal } from "antd";
 import { NavBar } from "antd-mobile";
 import Axios from "axios";
-//import { liffHelper } from "../../App";
-
-// Code in the dark, LINE URL scheme
-// Code in the dark, return locker
-
+import { liffHelper } from "../../App";
 const Deposit = () => {
   const [{ result, delay }, setQRCode] = useState({ result: "", delay: 300 });
   const [showModal, setModal] = useState(false);
@@ -17,26 +13,23 @@ const Deposit = () => {
     document.body.style.backgroundColor = "rgba(0,0,0,0.5)";
     const location = window.location.href;
     const indexOfEqual = location.indexOf("=");
-    initAxiosLineErrorHandling();
-
     if (indexOfEqual !== -1) {
       const accessCode = location.substring(indexOfEqual + 1);
       setAccessCode(accessCode);
-    } else {
-      openLocker();
     }
 
     return function cleanup() {
       document.body.style.backgroundColor = "";
-      setAxiosErrorHandlingToDefault();
     };
-  }, []);
+  });
 
   const afterScan = function(data) {
     if (data === null) return;
-    const indexOfEqual = data.indexOf("=");
-    const achievedAccessCode = data.substring(indexOfEqual + 1);
-    setAccessCode(achievedAccessCode);
+    if (accessCode === "") {
+      const indexOfEqual = data.indexOf("=");
+      const achievedAccessCode = data.substring(indexOfEqual + 1);
+      setAccessCode(achievedAccessCode);
+    }
     setQRCode({ result: data, delay: 300 });
     setModal(true);
   };
@@ -65,7 +58,7 @@ const Deposit = () => {
       }
     }
     setModal(false);
-    //liffHelper.closeLiff();
+    liffHelper.closeLiff();
   };
   console.log(accessCode, "accessCode");
   return (
@@ -107,38 +100,3 @@ const Deposit = () => {
 };
 
 export default Deposit;
-
-function showError() {
-  Modal.error({
-    title: "Authentication error",
-    content: "You are not authorized to access this locker!"
-  });
-}
-
-const initAxiosLineErrorHandling = () => {
-  Axios.interceptors.response.use(
-    response => {
-      return response;
-    },
-    error => {
-      if (error.response.status === 401 || error.response.status === 403) {
-        showError();
-      }
-      return error;
-    }
-  );
-};
-
-const setAxiosErrorHandlingToDefault = () => {
-  Axios.interceptors.response.use(
-    response => {
-      return response;
-    },
-    error => {
-      if (error.response.status === 401) {
-        window.location.href = "https://10e2f066.ngrok.io/auth/lineLoginPage";
-      }
-      return error;
-    }
-  );
-};
