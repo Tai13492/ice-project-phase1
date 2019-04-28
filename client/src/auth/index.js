@@ -9,6 +9,9 @@ import Axios from "axios";
 import { END_POINT } from "../index";
 
 class Auth extends React.Component {
+  state = {
+    res: ""
+  };
   async componentDidMount() {
     const { setAuthentication, setTokenAndExpiration } = this.props;
     initAxiosErrorHandling(deleteTokenAndExpiration);
@@ -20,6 +23,7 @@ class Auth extends React.Component {
           lineToken: idToken
         });
         if (res) {
+          this.setState({ res });
           localStorage.setItem("token", res.data.token);
           setAuthentication(true);
           setTokenAndExpiration(idToken, expireIn);
@@ -35,7 +39,7 @@ class Auth extends React.Component {
     }
   }
   render() {
-    return <h1> Loading...</h1>;
+    return <h1> Loading... {JSON.stringify(this.state.res)}</h1>;
   }
 }
 
