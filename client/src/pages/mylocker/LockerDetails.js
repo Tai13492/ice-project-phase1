@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Icon, Timeline } from "antd";
-import { NavBar } from "antd-mobile";
+import { NavBar, Modal } from "antd-mobile";
 import { connect } from "react-redux";
 import Axios from "axios";
-// const prompt = Modal.prompt;
+const prompt = Modal.prompt;
 
 const LockerDetails = ({
   match,
@@ -45,14 +45,13 @@ const LockerDetails = ({
       { text: "Cancel" },
       {
         text: "Submit",
-        onPress: value =>
-          new Promise(async resolve => {
-            await Axios.post("/report", {
-              message: value,
-              lockerID: match.params.id
-            });
-            resolve();
-          })
+        onPress: async value => {
+          const res = await Axios.post("/report", {
+            message: value,
+            lockerID: match.params.id
+          });
+          console.log(res, "Submitted");
+        }
       }
     ]);
   };

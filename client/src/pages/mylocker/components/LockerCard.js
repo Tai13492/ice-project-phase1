@@ -37,8 +37,7 @@ const LockerCard = ({
             >
               <Icon type="rollback" style={{ marginRight: 4 }} /> Return
             </button>,
-            <a
-              href="line://msg/text/?loremipsum"
+            <button
               className="button default bg-success"
               onClick={async () =>
                 Alert(
@@ -49,10 +48,16 @@ const LockerCard = ({
                     {
                       text: "Ok",
                       onPress: async () => {
-                        const res = await Axios.get(
-                          "/share-locker/generateLink/" + lockerID
-                        );
-                        console.log(res);
+                        try {
+                          const res = await Axios.get(
+                            "/share-locker/generateLink/" + lockerID
+                          );
+                          window.location.href =
+                            "line://msg/text/?" + res.data.link;
+                        } catch (error) {
+                          console.log(error);
+                          throw error;
+                        }
                       }
                     }
                   ]
@@ -62,7 +67,7 @@ const LockerCard = ({
               {" "}
               <Icon type="usergroup-add" style={{ marginRight: 4 }} />
               Share
-            </a>
+            </button>
           ]
         : null
     }
