@@ -26,10 +26,7 @@ const MyLocker = ({
   }, []);
   return (
     <div className="bg-primary">
-      <NavBar mode="dark">
-        {" "}
-        Accessible Lockers {JSON.stringify(localStorage.getItem("url"))}{" "}
-      </NavBar>
+      <NavBar mode="dark"> Accessible Lockers</NavBar>
       <div style={{ backgroundColor: "#2979FF" }}>
         <Row type="flex" align="middle">
           <Col span={8} style={{ padding: 12 }}>
