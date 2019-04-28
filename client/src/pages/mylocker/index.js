@@ -28,7 +28,7 @@ const MyLocker = ({
     <div className="bg-primary">
       <NavBar mode="dark">
         {" "}
-        Accessible Lockers {JSON.stringify(localStorage.getItem("path"))}{" "}
+        Accessible Lockers {JSON.stringify(localStorage.getItem("url"))}{" "}
       </NavBar>
       <div style={{ backgroundColor: "#2979FF" }}>
         <Row type="flex" align="middle">

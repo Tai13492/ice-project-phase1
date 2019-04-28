@@ -51,7 +51,6 @@ const Lockers = () => {
   return (
     <div className="bg-primary">
       <NavBar mode="dark"> Find Lockers </NavBar>
-      <a href="line://msg/text/?loremipsum"> Share Test</a>
       <WingBlank size="lg">
         <WhiteSpace size="lg" />
         <div className="search-bar-container">

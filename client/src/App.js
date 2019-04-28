@@ -12,7 +12,8 @@ class App extends Component {
     const { setInitialURL } = this.props;
     if (!window.location.href.includes("/auth/line-landing")) {
       const path = window.location.href.split("/")[3];
-      localStorage.setItem("path", "find-lockers");
+      localStorage.setItem("path", path);
+      localStorage.setItem("url", window.location.href);
       setInitialURL(path);
     }
     setInitialURL(localStorage.getItem("path"));
