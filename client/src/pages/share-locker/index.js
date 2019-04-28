@@ -40,7 +40,7 @@ const ShareLockerLanding = ({ history, liffData }) => {
 };
 
 const mapStateToProps = state => ({
-  liddData: state.liff.data
+  liffData: state.liff.data
 });
 
 export default connect(mapStateToProps)(ShareLockerLanding);
