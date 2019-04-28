@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Modal } from "antd";
 import Axios from "axios";
+import { connect } from "react-redux";
+import { liffHelper } from "../../App";
 
 const confirm = Modal.confirm;
 
@@ -18,19 +20,27 @@ async function showConfirm(accessCode, history) {
     }
   });
 }
-const ShareLockerLanding = ({ history }) => {
+const ShareLockerLanding = ({ history, liffData }) => {
   const [accessCode, setAccessCode] = useState("");
   useEffect(() => {
-    const location = window.location.href;
-    const indexOfEqual = location.indexOf("=");
-    if (indexOfEqual !== -1) {
-      const code = location.substring(indexOfEqual + 1);
-      setAccessCode(code);
-      showConfirm(accessCode, history);
+    if (liffData) {
+      liffHelper.openExternal(window.location.href, true);
+    } else {
+      const location = window.location.href;
+      const indexOfEqual = location.indexOf("=");
+      if (indexOfEqual !== -1) {
+        const code = location.substring(indexOfEqual + 1);
+        setAccessCode(code);
+        showConfirm(accessCode, history);
+      }
     }
   });
 
-  return <h1> Loading ...</h1>;
+  return <h1> Sharing Locker ....</h1>;
 };
 
-export default ShareLockerLanding;
+const mapStateToProps = state => ({
+  liddData: state.liff.data
+});
+
+export default connect(mapStateToProps)(ShareLockerLanding);
