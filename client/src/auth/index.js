@@ -17,27 +17,27 @@ class Auth extends React.Component {
     initAxiosErrorHandling(deleteTokenAndExpiration);
     const idToken = localStorage.getItem("idToken");
     const expireIn = localStorage.getItem("expireIn");
-    if (idToken) {
-      try {
-        const res = await Axios.post("/auth/myToken/line", {
-          lineToken: idToken
-        });
-        if (res) {
-          // this.setState({ res });
-          localStorage.setItem("token", res.data.token);
-          setAuthentication(true);
-          setTokenAndExpiration(idToken, expireIn);
-          Axios.defaults.headers.common["Authorization"] =
-            "Bearer " + res.data.token;
-        }
-        this.setState({ res });
-      } catch (error) {
-        console.log(error);
-        throw error;
-      }
-    } else {
-      window.location.href = END_POINT + "/auth/lineLoginPage";
-    }
+    // if (idToken) {
+    //   try {
+    //     const res = await Axios.post("/auth/myToken/line", {
+    //       lineToken: idToken
+    //     });
+    //     if (res) {
+    //       // this.setState({ res });
+    //       localStorage.setItem("token", res.data.token);
+    //       setAuthentication(true);
+    //       setTokenAndExpiration(idToken, expireIn);
+    //       Axios.defaults.headers.common["Authorization"] =
+    //         "Bearer " + res.data.token;
+    //     }
+    //     this.setState({ res });
+    //   } catch (error) {
+    //     console.log(error);
+    //     throw error;
+    //   }
+    // } else {
+    window.location.href = END_POINT + "/auth/lineLoginPage";
+    //}
   }
   render() {
     return <h1> Loading... {JSON.stringify(this.state.res)}</h1>;
