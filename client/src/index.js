@@ -7,7 +7,7 @@ import store from "./store";
 import { Provider } from "react-redux";
 import Axios from "axios";
 
-export const END_POINT = "https://bf139e10.ngrok.io";
+export const END_POINT = "https://4ce77c2e.ngrok.io";
 // if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
 //   END_POINT = "https://10e2f066.ngrok.io";
 // } else {
