@@ -40,24 +40,24 @@ const LockerCard = ({
             <a
               href="line://msg/text/?loremipsum"
               className="button default bg-success"
-              // onClick={async () =>
-              //   Alert(
-              //     "Share Locker",
-              //     "Are you going to share " + location_description + " ?",
-              //     [
-              //       { text: "Cancel", onPress: () => console.log("cancel") },
-              //       {
-              //         text: "Ok",
-              //         onPress: async () => {
-              //           const res = await Axios.get(
-              //             "/share-locker/generateLink/" + lockerID
-              //           );
-              //           console.log(res);
-              //         }
-              //       }
-              //     ]
-              //   )
-              // }
+              onClick={async () =>
+                Alert(
+                  "Share Locker",
+                  "Are you going to share " + location_description + " ?",
+                  [
+                    { text: "Cancel", onPress: () => console.log("cancel") },
+                    {
+                      text: "Ok",
+                      onPress: async () => {
+                        const res = await Axios.get(
+                          "/share-locker/generateLink/" + lockerID
+                        );
+                        console.log(res);
+                      }
+                    }
+                  ]
+                )
+              }
             >
               {" "}
               <Icon type="usergroup-add" style={{ marginRight: 4 }} />

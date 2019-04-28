@@ -15,7 +15,6 @@ const LockerDetails = ({
   const [lockerHistory, setLockerHistory] = useState([]);
   const getLockerInstanceHistory = async () => {
     const res = await Axios.get("/locker-instance/history/" + match.params.id);
-    console.log(res, "res");
     setLockerHistory(res.data.lockerUsages);
   };
   useEffect(() => {
@@ -41,19 +40,22 @@ const LockerDetails = ({
       document.body.style.backgroundColor = "";
     };
   }, []);
-  // const reportProblem = () => {
-  //   prompt("Report Problem", "Please input your problem", [
-  //     { text: "Cancel" },
-  //     {
-  //       text: "Submit",
-  //       onPress: value =>
-  //         new Promise(resolve => {
-  //           console.log(value);
-  //           resolve();
-  //         })
-  //     }
-  //   ]);
-  // };
+  const reportProblem = () => {
+    prompt("Report Problem", "Please input your problem", [
+      { text: "Cancel" },
+      {
+        text: "Submit",
+        onPress: value =>
+          new Promise(async resolve => {
+            await Axios.post("/report", {
+              message: value,
+              lockerID: match.params.id
+            });
+            resolve();
+          })
+      }
+    ]);
+  };
   return (
     <div className="locker-details">
       <NavBar
@@ -118,12 +120,11 @@ const LockerDetails = ({
             </Timeline.Item> */}
           </Timeline>
         </div>
-        {/* <div className="center-only-child">
+        <div className="center-only-child">
           <button className="report" onClick={() => reportProblem()}>
-            {" "}
-            Report Problems{" "}
+            Report Problems
           </button>
-        </div> */}
+        </div>
       </div>
     </div>
   );
