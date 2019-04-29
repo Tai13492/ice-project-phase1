@@ -30,7 +30,13 @@ const LockerCard = ({
                   "Are you going to return " + location_description + " ?",
                   [
                     { text: "Cancel", onPress: () => console.log("cancel") },
-                    { text: "Ok", onPress: () => console.log("Ok") }
+                    {
+                      text: "Ok",
+                      onPress: async () =>
+                        await Axios.post("/locker-instance/returnByID", {
+                          lockerID
+                        })
+                    }
                   ]
                 )
               }

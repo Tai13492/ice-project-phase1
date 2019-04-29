@@ -18,6 +18,7 @@ Axios.defaults.baseURL = END_POINT;
 Axios.defaults.headers.post["Content-Type"] = "application/json";
 Axios.defaults.headers.common["Authorization"] =
   "Bearer " + localStorage.getItem("token");
+Axios.interceptors.response.use(null, error => Promise.reject(error));
 
 ReactDOM.render(
   <Provider store={store}>
