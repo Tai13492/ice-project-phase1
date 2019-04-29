@@ -3,7 +3,12 @@ import { WhiteSpace, NavBar } from "antd-mobile";
 import { Row, Col } from "antd";
 import LockerCard from "./components/LockerCard";
 import { connect } from "react-redux";
-import { fetchMyLockers, fetchSharedLockers, fetchUserProfile } from "./ducks";
+import {
+  fetchMyLockers,
+  fetchSharedLockers,
+  fetchUserProfile,
+  removeLockerByID
+} from "./ducks";
 
 // const Alert = Modal.alert;
 const MyLocker = ({
@@ -13,7 +18,8 @@ const MyLocker = ({
   fetchSharedLockers,
   sharedLockersInstances,
   fetchUserProfile,
-  userProfile
+  userProfile,
+  removeLockerByID
 }) => {
   useEffect(() => {
     fetchUserProfile();
@@ -83,6 +89,7 @@ const MyLocker = ({
               startTime={startTime}
               number={locker.number}
               isMine={true}
+              removeLockerByID={removeLockerByID}
             />
             <WhiteSpace size="lg" />
           </React.Fragment>
@@ -134,5 +141,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { fetchMyLockers, fetchSharedLockers, fetchUserProfile }
+  { fetchMyLockers, fetchSharedLockers, fetchUserProfile, removeLockerByID }
 )(MyLocker);

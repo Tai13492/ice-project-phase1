@@ -14,7 +14,8 @@ const LockerCard = ({
   startTime,
   isMine,
   number,
-  profileImage
+  profileImage,
+  removeLockerByID
 }) => (
   <Card
     key={lockerID}
@@ -32,10 +33,12 @@ const LockerCard = ({
                     { text: "Cancel", onPress: () => console.log("cancel") },
                     {
                       text: "Ok",
-                      onPress: async () =>
+                      onPress: async () => {
                         await Axios.post("/locker-instance/returnByID", {
                           lockerID
-                        })
+                        });
+                        removeLockerByID(lockerID);
+                      }
                     }
                   ]
                 )

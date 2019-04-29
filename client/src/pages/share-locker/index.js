@@ -12,7 +12,7 @@ async function showConfirm(accessCode, history) {
     async onOk() {
       try {
         await Axios.post("/share-locker/addUserPermission", { accessCode });
-        history.push("/");
+        history.push("/my-locker");
       } catch (error) {
         console.log(error);
         throw error;
