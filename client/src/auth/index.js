@@ -35,7 +35,29 @@ class Auth extends React.Component {
     }
   }
   render() {
-    return <h1> Loading...</h1>;
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: "#2979ff",
+          width: "100vw",
+          height: "100vh"
+        }}
+      >
+        <div class="lds-roller">
+          <div />
+          <div />
+          <div />
+          <div />
+          <div />
+          <div />
+          <div />
+          <div />
+        </div>
+      </div>
+    );
   }
 }
 

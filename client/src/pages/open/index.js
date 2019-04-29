@@ -65,6 +65,7 @@ const Deposit = () => {
     setModal(false);
     liffHelper.closeLiff();
   };
+  console.log(result, "result");
   return (
     <div>
       <NavBar mode="dark">Open Locker</NavBar>
