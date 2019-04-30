@@ -30,7 +30,6 @@ const ShareLockerLanding = ({ history, liffData }) => {
     const indexOfEqual = location.indexOf("=");
     if (indexOfEqual !== -1) {
       const code = location.substring(indexOfEqual + 1);
-      console.log(code, "code");
       setAccessCode(code);
       showConfirm(code, history);
     }

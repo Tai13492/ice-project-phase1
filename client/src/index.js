@@ -7,11 +7,11 @@ import store from "./store";
 import { Provider } from "react-redux";
 import Axios from "axios";
 
-export const END_POINT = "https://0a35c1a7.ngrok.io";
+export const END_POINT = REACT_APP_PRODUCTION_ENDPOINT;
 // if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
 //   END_POINT = "https://10e2f066.ngrok.io";
 // } else {
-//   END_POINT = "https://api.lockerswarm.xyz";
+//   END_POINT = REACT_APP_PRODUCTION_ENDPOINT
 // }
 
 Axios.defaults.baseURL = END_POINT;
