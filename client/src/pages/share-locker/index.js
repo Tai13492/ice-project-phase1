@@ -11,8 +11,11 @@ async function showConfirm(accessCode, history) {
     title: "Do you want to have access to your friend's locker?",
     async onOk() {
       try {
-        await Axios.post("/share-locker/addUserPermission", { accessCode });
+        const res = await Axios.post("/share-locker/addUserPermission", {
+          accessCode
+        });
         history.push("/my-locker");
+        console.log(res);
       } catch (error) {
         console.log(error);
         throw error;
@@ -23,19 +26,16 @@ async function showConfirm(accessCode, history) {
 const ShareLockerLanding = ({ history, liffData }) => {
   const [accessCode, setAccessCode] = useState("");
   useEffect(() => {
-    if (liffData) {
-      liffHelper.openExternal(window.location.href, true);
-    } else {
-      const location = window.location.href;
-      const indexOfEqual = location.indexOf("=");
-      if (indexOfEqual !== -1) {
-        const code = location.substring(indexOfEqual + 1);
-        setAccessCode(code);
-        showConfirm(accessCode, history);
-      }
+    const location = window.location.href;
+    const indexOfEqual = location.indexOf("=");
+    if (indexOfEqual !== -1) {
+      const code = location.substring(indexOfEqual + 1);
+      console.log(code, "code");
+      setAccessCode(code);
+      showConfirm(code, history);
     }
   }, []);
-
+  console.log(accessCode, "accessCode");
   return <h1> Sharing Locker ....</h1>;
 };
 
