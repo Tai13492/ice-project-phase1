@@ -27,7 +27,7 @@ const Deposit = ({ history }) => {
     return function cleanup() {
       document.body.style.backgroundColor = "";
     };
-  });
+  }, []);
 
   const afterScan = function(data) {
     if (data === null) return;

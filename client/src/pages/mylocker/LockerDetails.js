@@ -13,11 +13,14 @@ const LockerDetails = ({
 }) => {
   const [lockerDetails, setLockerDetails] = useState({});
   const [lockerHistory, setLockerHistory] = useState([]);
-  const getLockerInstanceHistory = async () => {
-    const res = await Axios.get("/locker-instance/history/" + match.params.id);
-    setLockerHistory(res.data.lockerUsages);
-  };
+
   useEffect(() => {
+    const getLockerInstanceHistory = async () => {
+      const res = await Axios.get(
+        "/locker-instance/history/" + match.params.id
+      );
+      setLockerHistory(res.data.lockerUsages);
+    };
     const index = myLockersInstances.findIndex(lockerInstance => {
       return parseInt(match.params.id) === parseInt(lockerInstance.lockerID);
     });
@@ -39,7 +42,7 @@ const LockerDetails = ({
     return () => {
       document.body.style.backgroundColor = "";
     };
-  }, []);
+  }, [match.params.id, myLockersInstances, sharedLockersInstances]);
   const reportProblem = () => {
     prompt("Report Problem", "Please input your problem", [
       { text: "Cancel" },
