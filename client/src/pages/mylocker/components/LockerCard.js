@@ -14,6 +14,7 @@ const LockerCard = ({
   startTime,
   isMine,
   number,
+  fetchUserCreditUsage,
   profileImage,
   removeLockerByID
 }) => (
@@ -38,6 +39,7 @@ const LockerCard = ({
                           lockerID
                         });
                         removeLockerByID(lockerID);
+                        fetchUserCreditUsage();
                       }
                     }
                   ]

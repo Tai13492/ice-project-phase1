@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { WhiteSpace, NavBar } from "antd-mobile";
 import { Row, Col } from "antd";
 import LockerCard from "./components/LockerCard";
@@ -9,6 +9,7 @@ import {
   fetchUserProfile,
   removeLockerByID
 } from "./ducks";
+import Axios from "axios";
 
 // const Alert = Modal.alert;
 const MyLocker = ({
@@ -21,10 +22,21 @@ const MyLocker = ({
   userProfile,
   removeLockerByID
 }) => {
+  const [userCredit, setUserCredit] = useState(0);
+  const fetchUserCreditUsage = async () => {
+    try {
+      const res = await Axios.get("/credit-usage/myCredit");
+      setUserCredit(res.data.totalCredit);
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  };
   useEffect(() => {
     fetchUserProfile();
     fetchMyLockers();
     fetchSharedLockers();
+    fetchUserCreditUsage();
     document.body.style.backgroundColor = "#EEF4FB";
     return () => {
       document.body.style.backgroundColor = "";
@@ -62,6 +74,24 @@ const MyLocker = ({
                 {myLockersInstances.length + sharedLockersInstances.length}{" "}
               </span>{" "}
             </p>
+            <p style={{ marginBottom: 2 }}>Credits: {" " + userCredit}</p>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <button
+                className="bg-success"
+                style={{
+                  marginTop: 2,
+                  borderRadius: 4,
+                  borderWidth: 0,
+                  borderColor: "transparent",
+                  display: "absolute",
+                  right: 12
+                }}
+                onClick={() => history.push("/my-credit-history")}
+              >
+                {" "}
+                Credit History{" "}
+              </button>
+            </div>
           </Col>
         </Row>
       </div>
@@ -90,6 +120,7 @@ const MyLocker = ({
               number={locker.number}
               isMine={true}
               removeLockerByID={removeLockerByID}
+              fetchUserCreditUsage={fetchUserCreditUsage}
             />
             <WhiteSpace size="lg" />
           </React.Fragment>
