@@ -87,7 +87,7 @@ const initAxiosErrorHandling = callback => {
         callback();
         window.location.href = END_POINT + "/auth/lineLoginPage";
       }
-      return error;
+      return Promise.reject(error);
     }
   );
 };

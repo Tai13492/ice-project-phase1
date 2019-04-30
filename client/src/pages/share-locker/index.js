@@ -34,7 +34,7 @@ const ShareLockerLanding = ({ history, liffData }) => {
         showConfirm(accessCode, history);
       }
     }
-  }, [accessCode, history, liffData]);
+  }, []);
 
   return <h1> Sharing Locker ....</h1>;
 };

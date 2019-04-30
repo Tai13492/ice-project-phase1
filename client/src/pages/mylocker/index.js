@@ -29,7 +29,7 @@ const MyLocker = ({
     return () => {
       document.body.style.backgroundColor = "";
     };
-  }, [fetchUserProfile, fetchMyLockers, fetchSharedLockers]);
+  }, []);
   return (
     <div className="bg-primary">
       <NavBar mode="dark"> Accessible Lockers</NavBar>

@@ -43,28 +43,32 @@ const Deposit = ({ history }) => {
       data: { isInUsed }
     } = await Axios.get(`/locker-instance/isInUsed?accessCode=${accessCode}`);
     if (isInUsed) {
-      Axios.post(`/locker-instance/unlock`, {
-        accessCode: accessCode
-      })
-        .then(res => {
+      try {
+        const res = await Axios.post(`/locker-instance/unlock`, {
+          accessCode: accessCode
+        });
+        if (res.data) {
           console.log(res);
           history.push("/my-locker");
-        })
-        .catch(error => {
-          console.log(error.response, "error response");
+        }
+      } catch (error) {
+        if (error.response.status === 403) {
           triggerErrorModal();
-        });
+        }
+      }
     } else {
       Axios.post(`/locker-instance/createInstance`, {
         accessCode: accessCode
       })
         .then(res => {
-          console.log(res);
-          history.push("/my-locker");
+          if (res.data) {
+            history.push("/my-locker");
+          }
         })
         .catch(error => {
-          console.log(error.response, "error response");
-          triggerErrorModal();
+          if (error.response.status === 403) {
+            triggerErrorModal();
+          }
         });
     }
     setModal(false);
