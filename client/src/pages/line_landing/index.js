@@ -49,7 +49,7 @@ class LineLanding extends React.Component {
           height: "100vh"
         }}
       >
-        <div class="lds-roller">
+        <div className="lds-roller">
           <div />
           <div />
           <div />

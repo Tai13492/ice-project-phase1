@@ -3,7 +3,6 @@ import QrReader from "react-qr-reader";
 import { Modal } from "antd";
 import { NavBar } from "antd-mobile";
 import Axios from "axios";
-import { liffHelper } from "../../App";
 
 function triggerErrorModal() {
   Modal.error({
@@ -11,7 +10,7 @@ function triggerErrorModal() {
     content: "You are not authorized"
   });
 }
-const Deposit = () => {
+const Deposit = ({ history }) => {
   const [{ result, delay }, setQRCode] = useState({ result: "", delay: 300 });
   const [showModal, setModal] = useState(false);
   const [accessCode, setAccessCode] = useState("");
@@ -47,7 +46,10 @@ const Deposit = () => {
       Axios.post(`/locker-instance/unlock`, {
         accessCode: accessCode
       })
-        .then(res => console.log(res))
+        .then(res => {
+          console.log(res);
+          history.push("/my-locker");
+        })
         .catch(error => {
           console.log(error.response, "error response");
           triggerErrorModal();
@@ -56,14 +58,16 @@ const Deposit = () => {
       Axios.post(`/locker-instance/createInstance`, {
         accessCode: accessCode
       })
-        .then(res => console.log(res))
+        .then(res => {
+          console.log(res);
+          history.push("/my-locker");
+        })
         .catch(error => {
           console.log(error.response, "error response");
           triggerErrorModal();
         });
     }
     setModal(false);
-    liffHelper.closeLiff();
   };
   console.log(result, "result");
   return (

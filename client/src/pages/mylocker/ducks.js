@@ -74,13 +74,16 @@ export default (state = initialState, action) => {
       };
     }
     case REMOVE_LOCKER_BY_ID: {
-      const { lockerID } = payload;
+      state.myLockersInstances.forEach(element => console.log(element));
       const index = state.myLockersInstances.findIndex(
-        element => element.lockerID === lockerID
+        element => element.lockerID === payload
+      );
+      const updatedLockerInstances = [...state.myLockersInstances].filter(
+        (element, idx) => idx !== index
       );
       return {
         ...state,
-        myLockersInstances: [...state.myLockersInstances].splice(index, 1)
+        myLockersInstances: updatedLockerInstances
       };
     }
     case SET_USER: {
